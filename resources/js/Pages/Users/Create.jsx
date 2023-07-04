@@ -48,6 +48,9 @@ export default function Create({ auth }) {
                                                 setData("email", e.target.value)
                                             }
                                         />
+                                        <span className="text-red-600">
+                                            {errors.email}
+                                        </span>
                                     </div>
                                     <div className="mb-4">
                                         <label className="">Name</label>
@@ -56,11 +59,15 @@ export default function Create({ auth }) {
                                             className="w-full px-4 py-2"
                                             label="name"
                                             name="name"
+                                            errors={errors.name}
                                             value={data.name}
                                             onChange={(e) =>
                                                 setData("name", e.target.value)
                                             }
                                         />
+                                        <span className="text-red-600">
+                                            {errors.name}
+                                        </span>
                                     </div>
                                     <div className="mb-4">
                                         <label className="">Password</label>
