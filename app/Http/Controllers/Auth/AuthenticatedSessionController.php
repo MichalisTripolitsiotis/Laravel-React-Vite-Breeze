@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect(route('verify.phone'));
     }
 
     /**
@@ -42,6 +42,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        \App\Models\User::where('id', Auth::user()->id)
+            ->update([
+                'phone_verified' => false
+            ]);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

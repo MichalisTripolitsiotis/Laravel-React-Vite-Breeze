@@ -12,6 +12,7 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        phone_number: ''
     });
 
     useEffect(() => {
@@ -63,6 +64,22 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="phone_number" value="Phone Number" />
+
+                    <TextInput
+                        id="phone_number"
+                        name="phone_number"
+                        value={data.phone}
+                        className="mt-1 block w-full"
+                        autoComplete="phone_number"
+                        onChange={(e) => setData('phone_number', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.phone} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
