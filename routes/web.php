@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhoneVerificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -27,9 +28,8 @@ Route::get('/', function () {
 });
 
 Route::prefix('/verify')->group(function () {
-    Route::get('/phone', function () {
-        return Inertia::render('Auth/PhoneNumberVerify');
-    })->name('verify.phone');
+    Route::get('/phone', [PhoneVerificationController::class, 'index'])->name('verify.phone');
+    Route::post('/phone', [PhoneVerificationController::class, 'verify'])->name('verify.phone.verify');
 });
 
 
