@@ -11,6 +11,9 @@ use Twilio\Rest\Client;
 
 class PhoneVerificationController extends Controller
 {
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Inertia\Response
+     */
     public function index()
     {
         if (Auth::user()->phone_verified) {
@@ -25,7 +28,12 @@ class PhoneVerificationController extends Controller
         ]);
     }
 
-    public function verify(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return void
+     */
+    public function verify(Request $request): void
     {
         try {
             $twilio = $this->connect();
@@ -54,7 +62,7 @@ class PhoneVerificationController extends Controller
     /**
      * @return void
      */
-    private function sendCode()
+    private function sendCode(): void
     {
         try {
             $twilio = $this->connect();
