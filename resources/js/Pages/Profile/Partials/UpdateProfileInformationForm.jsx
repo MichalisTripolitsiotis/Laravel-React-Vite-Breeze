@@ -26,6 +26,16 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Update your account profile here</h2>
             </header>
+            <Transition
+                show={recentlySuccessful}
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+                className="transition ease-in-out duration-7000"
+            >
+                <p className="text-lg text-primary">Profile updated successfully</p>
+            </Transition>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
@@ -116,15 +126,6 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
 
                 <div className="flex items-center gap-4">
                     <PrimaryButton disabled={processing}>Save</PrimaryButton>
-
-                    <Transition
-                        show={recentlySuccessful}
-                        enterFrom="opacity-0"
-                        leaveTo="opacity-0"
-                        className="transition ease-in-out"
-                    >
-                        <p className="text-sm text-gray-600">Saved.</p>
-                    </Transition>
                 </div>
             </form>
         </section>

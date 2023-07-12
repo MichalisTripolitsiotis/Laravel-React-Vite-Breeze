@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Provider\en_GB\PhoneNumber;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,7 +24,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'phone_number' => fake()->unique()->phoneNumber(),
+            'phone_number' => PhoneNumber::mobileNumber(),
             'phone_verified' => true,
             'remember_token' => Str::random(10),
         ];
