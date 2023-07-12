@@ -2,7 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 import GuestLayout from '@/Layouts/GuestLayout';
 
 export default function PhoneNumberVerify({ errors, message }) {
@@ -26,11 +26,11 @@ export default function PhoneNumberVerify({ errors, message }) {
             <InputLabel value={message} className="mt-2" />
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="code" value="Code" />
-
+                    <h2 className="font-bold text-lg mb-4 text-center">Enter the 6-digit code found in your authenticator app</h2>
                     <TextInput
                         id="code"
                         type="number"
+                        placeholder="Authentication code"
                         name="code"
                         pattern="[0-9]*"
                         value={data.code}
@@ -42,10 +42,24 @@ export default function PhoneNumberVerify({ errors, message }) {
                     <InputError message={errors} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ml-4" disabled={processing}>
-                        Verify code
+                <div className="flex flex-col items-center mt-4">
+                    <PrimaryButton className="ml-4 bg-secondary" disabled={processing}>
+                        Confirm
                     </PrimaryButton>
+
+                    <Link
+                        href="/"
+                        className="mt-6 text-secondary font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Use another authentication method
+                    </Link>
+
+                    <Link
+                        href="/"
+                        className="mt-3 text-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Need help authenticating?
+                    </Link>
                 </div>
             </form>
         </GuestLayout>

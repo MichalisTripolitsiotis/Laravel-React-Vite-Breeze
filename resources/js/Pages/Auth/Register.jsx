@@ -8,7 +8,8 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        first_name: '',
+        last_name: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -33,20 +34,37 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="first_name" value="First Name" />
 
                     <TextInput
-                        id="name"
-                        name="name"
+                        id="first_name"
+                        name="first_name"
                         value={data.name}
                         className="mt-1 block w-full"
-                        autoComplete="name"
+                        autoComplete="first_name"
                         isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
+                        onChange={(e) => setData('first_name', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.first_name} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="last_name" value="Last Name" />
+
+                    <TextInput
+                        id="last_name"
+                        name="last_name"
+                        value={data.name}
+                        className="mt-1 block w-full"
+                        autoComplete="last_name"
+                        isFocused={true}
+                        onChange={(e) => setData('last_name', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.last_name} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
