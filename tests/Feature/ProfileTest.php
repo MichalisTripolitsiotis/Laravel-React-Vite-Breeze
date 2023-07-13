@@ -31,6 +31,7 @@ class ProfileTest extends TestCase
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'test@example.com',
+                'phone_number' => 66962880501
             ]);
 
         $response
@@ -55,6 +56,7 @@ class ProfileTest extends TestCase
                 'first_name' => 'User',
                 'last_name' => 'Test',
                 'email' => $user->email,
+                'phone_number' => intval($user->phone_number)
             ]);
 
         $response

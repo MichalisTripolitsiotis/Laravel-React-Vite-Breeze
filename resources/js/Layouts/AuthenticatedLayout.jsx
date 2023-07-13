@@ -26,6 +26,11 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('tenants.index')} active={route().current('tenants.index')}>
+                                    Manage Tenants
+                                </NavLink>
+                            </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href={route('profile.edit')} active={route().current('profile.edit')}>
                                     My profile
                                 </NavLink>

@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         $tenant = Tenant::create([
             'id' => 'hfma',
+            'lead_contact_name' => 'Paul Dison',
+            'lead_contact_email' => 'pauldison@hfma.org.uk'
         ]);
 
         $tenant->domains()->create([

@@ -23,5 +23,5 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    require __DIR__ . '/web.php';
+    require __DIR__ . '/base_routes.php';
 });
