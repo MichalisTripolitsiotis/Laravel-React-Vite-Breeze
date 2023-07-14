@@ -37,7 +37,12 @@ class TenantController extends Controller
      */
     public function store(TenantRequest $request)
     {
-        $tenant = Tenant::create($request->all());
+        $tenant = Tenant::create([
+            'id' => $request->id,
+            'lead_contact_name' => $request->lead_contact_name,
+            'lead_contact_email' => $request->lead_contact_email
+        ]);
+
         $url = str_replace('http://', '.', env('APP_URL'));
 
         $tenant->domains()->create([

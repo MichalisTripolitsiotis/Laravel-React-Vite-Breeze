@@ -11,6 +11,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains;
 
+    const CENTRAL_DATABASE = 'landlord';
+
     public static function getCustomColumns(): array
     {
         return [
