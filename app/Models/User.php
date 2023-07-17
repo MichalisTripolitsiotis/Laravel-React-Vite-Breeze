@@ -53,10 +53,36 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = ['name'];
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::saving(function ($user) {
+            if (!$user->password) {
+                $user->password = self::generatePassword();
+            }
+        });
+    }
+
+    /**
      * @return string
      */
     public function getNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Generate a secure password.
+     *
+     * @param int $bytes
+     * @return string
+     */
+    public static function generatePassword($bytes = 16): string
+    {
+        $randBin = openssl_random_pseudo_bytes($bytes);
+        return bin2hex($randBin);
     }
 }
